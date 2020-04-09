@@ -156,24 +156,24 @@ battleButton.addEventListener('mousedown', function() {
 	winPercent = Math.round(winPercent * 10000) / 100;
 
 	regBattlesWinner.innerHTML =
-		'attacker win count: ' +
-		attacker.winCount +
-		'<br>' +
-		'defender win count: ' +
-		defender.winCount +
-		'<br>' +
-		'attacker win percent: ' +
+		// 'attacker win count: ' +
+		// attacker.winCount +
+		// '<br>' +
+		// 'defender win count: ' +
+		// defender.winCount +
+		// '<br>' +
+		'Attacker win percent: ' +
 		winPercent +
 		'%' +
 		'<br>' +
-		'defender win percent: ' +
+		'Defender win percent: ' +
 		Math.round((100 - winPercent) * 100) / 100 +
 		'%' +
 		'<br>' +
-		'average attacker troops remaining: ' +
+		'Average attacker troops remaining: ' +
 		averageAttackerTroopsRemaining +
 		'<br>' +
-		'average defender troops remaining: ' +
+		'Average defender troops remaining: ' +
 		averageDefenderTroopsRemaining;
 
 	attacker.winCount = 0;
