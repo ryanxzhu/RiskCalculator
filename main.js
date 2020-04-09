@@ -177,13 +177,13 @@ battleButton.addEventListener('mousedown', function() {
 
 	attacker.winCount = 0;
 	defender.winCount = 0;
-	battleButton.textContent = 'Battle Again!';
+	battleButton.textContent = 'Battle Again';
 });
 
 clearButton.addEventListener('mousedown', function() {
 	regBattlesWinner.innerHTML = '';
 	display.innerHTML = '';
-	battleButton.textContent = 'Battle!';
+	battleButton.textContent = 'Battle';
 	headings[0].style.display = 'none';
 	headings[1].style.display = 'none';
 });
