@@ -4,10 +4,6 @@ const capConquestWinner = document.querySelector('#capConquestWinner');
 const battleButton = document.querySelector('#battleButton');
 const clearButton = document.querySelector('#clearButton');
 const headings = document.querySelectorAll('h4');
-let total = 0;
-// let attackerArmySize = document.querySelector('#attackerStartingArmy');
-// let defenderArmySize = document.querySelector('#defenderStartingArmy');
-let trigger = true;
 
 let attacker = {
 	armySize: 0,
