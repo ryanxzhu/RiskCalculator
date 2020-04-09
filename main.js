@@ -123,15 +123,13 @@ battleButton.addEventListener('mousedown', function() {
 	let defenderTally = 0;
 
 	display.innerHTML =
-		'Attacking starting army: ' +
-		attackerArmySize +
-		'<br>' +
-		'Defending starting army: ' +
-		defenderArmySize +
-		'<br><br>' +
-		'Simulating ' +
-		numberOfRuns.toLocaleString() +
-		' battles...';
+		// 'Attacking starting army: ' +
+		// attackerArmySize +
+		// '<br>' +
+		// 'Defending starting army: ' +
+		// defenderArmySize +
+		// '<br><br>' +
+		'Simulating ' + numberOfRuns.toLocaleString() + ' battles...';
 
 	for (let i = 0; i < numberOfRuns; i++) {
 		blitz();
