@@ -107,13 +107,14 @@ function blitz() {
 }
 
 battleButton.addEventListener('mousedown', function() {
-	headings[0].style.display = 'block';
-	headings[1].style.display = 'block';
 	let attackerArmySize = parseInt(document.querySelector('#attackerStartingArmy').value) || 0;
 	let defenderArmySize = parseInt(document.querySelector('#defenderStartingArmy').value) || 0;
 	if (attackerArmySize <= 1 || defenderArmySize <= 0) {
 		return;
 	}
+
+	headings[0].style.display = 'block';
+	headings[1].style.display = 'block';
 
 	attacker.armySize = attackerArmySize;
 	defender.armySize = defenderArmySize;
