@@ -155,12 +155,12 @@ battleButton.addEventListener('mousedown', function() {
 	winPercent = Math.round(winPercent * 10000) / 100;
 
 	regBattlesWinner.innerHTML =
-		// 'attacker win count: ' +
-		// attacker.winCount +
-		// '<br>' +
-		// 'defender win count: ' +
-		// defender.winCount +
-		// '<br>' +
+		'attacker win count: ' +
+		attacker.winCount +
+		'<br>' +
+		'defender win count: ' +
+		defender.winCount +
+		'<br>' +
 		'Attacker win percent: ' +
 		winPercent +
 		'%' +
