@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Calculator</title>
+    <style>
+        label {
+            display: inline-block;
+            width: 158px;
+        }
+        input[type=number] {
+            width: 85px;
+        }
+
+        h4 {
+            display: none;
+            margin-bottom: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Blitz Roll Calculator</h1>
+    <form>
+        <label>Attacker Starting Army</label>
+        <input type="number" min="2" step="1" id="attackerStartingArmy" placeholder="minimum 2">
+        <br>
+        <label>Defender Starting Army</label>
+        <input type="number" min="1" step="1" id="defenderStartingArmy" placeholder="minimum 1">
+    </form>
+    <p id="display"></p>
+    <button id="battleButton">Battle!</button>
+    <button id="clearButton">Clear</button>
+
+    <hr>
+    <h4>Regular Battles</h4>
+    <p id="regBattlesWinner"></p>
+
+    <h4>Capital Conquest Battles</h4>
+    <p id="capConquestWinner"></p>
+
+    <script src="main.js"></script>
+</body>
+</html>
