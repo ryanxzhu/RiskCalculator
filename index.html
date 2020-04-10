@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
             width: 160px;
             margin-bottom: 10px;
         }
+
         input[type=number] {
             width: 85px;
         }
@@ -18,28 +20,43 @@
             display: none;
             margin-bottom: 0;
         }
+
+        h1 {
+            font-size: 25px;
+        }
+
+        section {
+            width: 300px;
+            margin: auto;
+        }
     </style>
 </head>
+
 <body>
-    <h1>Blitz Roll Win %</h1>
-    <form>
-        <label>Attacker Army Size</label>
-        <input type="number" min="2" step="1" id="attackerStartingArmy" placeholder="minimum 2">
-        <br>
-        <label>Defender Army Size</label>
-        <input type="number" min="1" step="1" id="defenderStartingArmy" placeholder="minimum 1">
-    </form>
-    <p id="display"></p>
-    <button id="battleButton">Battle</button>
-    <button id="clearButton">Clear</button>
+    <section>
+        <h1>Blitz Roll Win Percentage</h1>
+        <form>
+            <label>Attacker Army Size</label>
+            <input type="number" min="2" step="1" id="attackerStartingArmy" placeholder="minimum 2">
+            <br>
+            <label>Defender Army Size</label>
+            <input type="number" min="1" step="1" id="defenderStartingArmy" placeholder="minimum 1">
+        </form>
 
-    <hr>
-    <h4>Regular Battles</h4>
-    <p id="regBattlesWinner"></p>
+        <p id="display"></p>
 
-    <h4>Capital Conquest Battles</h4>
-    <p id="capConquestWinner"></p>
+        <button id="battleButton">Battle</button>
+        <button id="clearButton">Clear</button>
+
+        <hr>
+        <h4>Regular Battles</h4>
+        <p id="regBattlesWinner"></p>
+
+        <h4>Capital Conquest Battles</h4>
+        <p id="capConquestWinner"></p>
+    </section>
 
     <script src="main.js"></script>
 </body>
+
 </html>

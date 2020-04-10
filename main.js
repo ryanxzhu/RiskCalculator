@@ -5,6 +5,11 @@ const battleButton = document.querySelector('#battleButton');
 const clearButton = document.querySelector('#clearButton');
 const headings = document.querySelectorAll('h4');
 
+let battleType = 'normal';
+let winPercent = 0;
+let averageAttackerTroopsRemaining;
+let averageDefenderTroopsRemaining;
+
 let attacker = {
 	armySize: 0,
 	intention: 'attack',
@@ -65,7 +70,7 @@ function fightOnce() {
 		attacker.diceRoll.shift();
 		defender.diceRoll.shift();
 	}
-
+	// console.log('');
 	attacker.diceRoll = [];
 	defender.diceRoll = [];
 }
@@ -79,9 +84,17 @@ function numToFight(army) {
 		}
 	}
 
-	if (army.intention === 'defend') {
+	if (army.intention === 'defend' && battleType === 'normal') {
 		if (army.armySize > 1) {
 			return 2;
+		} else {
+			return army.armySize;
+		}
+	}
+
+	if (army.intention === 'defend' && battleType === 'capConquest') {
+		if (army.armySize > 2) {
+			return 3;
 		} else {
 			return army.armySize;
 		}
@@ -89,20 +102,25 @@ function numToFight(army) {
 }
 
 function blitz() {
+	// console.log('************************************************************');
 	while (attacker.armySize > 1 && defender.armySize > 0) {
 		fightOnce();
 	}
 
 	if (attacker.armySize <= 1) {
 		defender.winCount++;
+		// console.log('defender won');
+		// console.log('defender total wins: ' + defender.winCount, 'attacker total wins: ' + attacker.winCount);
 		return 'defender';
 	} else if (defender.armySize <= 0) {
 		attacker.winCount++;
+		// console.log('attacker won');
+		// console.log('defender total wins: ' + defender.winCount, 'attacker total wins: ' + attacker.winCount);
 		return 'attacker';
 	}
 }
 
-battleButton.addEventListener('mousedown', function() {
+function runBattle() {
 	let attackerArmySize = parseInt(document.querySelector('#attackerStartingArmy').value) || 0;
 	let defenderArmySize = parseInt(document.querySelector('#defenderStartingArmy').value) || 0;
 	if (attackerArmySize <= 1 || defenderArmySize <= 0) {
@@ -140,21 +158,19 @@ battleButton.addEventListener('mousedown', function() {
 		defender.armySize = defenderArmySize;
 	}
 
-	let averageAttackerTroopsRemaining = Math.round(attackerTally / attacker.winCount) || 1;
-	let averageDefenderTroopsRemaining = Math.round(defenderTally / defender.winCount) || 0;
+	averageAttackerTroopsRemaining = Math.round(attackerTally / attacker.winCount) || 1;
+	averageDefenderTroopsRemaining = Math.round(defenderTally / defender.winCount) || 0;
 
-	// winner.innerHTML =
-	// 	blitz() + '<br>' + ' attacker win count: ' + attacker.winCount + ' defender win count: ' + defender.winCount;
-	// attacker.armySize = 10;
-	// defender.armySize = 10;
-	let winPercent = attacker.winCount / (attacker.winCount + defender.winCount);
+	winPercent = attacker.winCount / (attacker.winCount + defender.winCount);
 	winPercent = Math.round(winPercent * 10000) / 100;
+}
 
-	regBattlesWinner.innerHTML =
-		'attacker win count: ' +
+function displayResult(element) {
+	element.innerHTML =
+		'Attacker win count: ' +
 		attacker.winCount +
 		'<br>' +
-		'defender win count: ' +
+		'Defender win count: ' +
 		defender.winCount +
 		'<br>' +
 		'Attacker win percent: ' +
@@ -170,11 +186,42 @@ battleButton.addEventListener('mousedown', function() {
 		'<br>' +
 		'Average defender troops remaining: ' +
 		averageDefenderTroopsRemaining;
+}
+
+battleButton.addEventListener('mousedown', function() {
+	completeSequence();
+});
+
+addEventListener('keypress', function(e) {
+	if (e.key === 'Enter') {
+		completeSequence();
+	}
+});
+
+function completeSequence() {
+	if (
+		document.querySelector('#attackerStartingArmy').value === '' ||
+		document.querySelector('#defenderStartingArmy').value === ''
+	) {
+		return;
+	}
+	runBattle();
+	displayResult(regBattlesWinner);
 
 	attacker.winCount = 0;
 	defender.winCount = 0;
+
+	battleType = 'capConquest';
+	runBattle();
+	displayResult(capConquestWinner);
+
+	attacker.winCount = 0;
+	defender.winCount = 0;
+
+	battleType = 'normal';
+
 	battleButton.textContent = 'Battle Again';
-});
+}
 
 clearButton.addEventListener('mousedown', function() {
 	regBattlesWinner.innerHTML = '';
